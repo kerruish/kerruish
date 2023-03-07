@@ -1,0 +1,30 @@
+h1 {
+  color: green;
+}
+
+body {
+    background-image: url("bg.png");
+}
+
+
+.heading {
+    text-align: center;
+}
+
+.content {
+  text-align: center;
+
+}
+
+.button {
+    background-color: blue;
+    padding: 1em;
+    margin: 2em;
+    border: .5em solid red;
+    display: inline-block;
+}
+
+.button:hover {
+      border: .5em solid purple;
+      font-weight: bold;
+}
