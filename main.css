@@ -1,30 +1,280 @@
+@font-face {
+  font-family: mainText;
+  font-weight: 400;
+  src: url(../fonts/Lato-Regular.ttf);
+}
+@font-face {
+  font-family: headingText;
+  font-weight: 800;
+  src: url(../fonts/Manrope-ExtraBold.ttf);
+}
+
+:root {
+  --main: #642580;
+  --main-light: #71458c;
+  --main-dark: #57206f;
+  --secondary: #41bac1;
+  --accent: #ed684a;
+  --accent-light: #f0836a;
+  --white: #f5f5f5;
+  --white-darker: #f8f9fa;
+  --white-dark: #e9ecef;
+  --black: #1a1a1a;
+  --black-light: #141414;
+  --black-lighter: #1f1f1f;
+  --green: #4fc979;
+  --gold: #ffd800;
+  /* --pink: #ed70b5; */
+  --blue: #0b3c6e;
+  --red: #dc2f02;
+
+  --aqua: #2cccc3;
+  --yellow: #facd3d;
+  --purple: #5626c4;
+  --pink: #e60576;
+
+  --main-grad: radial-gradient(var(--main-light), var(--main));
+  --coder-main-grad-dark: radial-gradient(var(--main), var(--main-dark));
+  --accent-grad: radial-gradient(var(--red), var(--accent));
+  --accent-grad-dark: radial-gradient(var(--coder-accent), var(--coder-red));
+}
+
+.aqua {
+  background-color: var(--aqua);
+}
+.yellow {
+  background-color: var(--yellow);
+}
+.purple {
+  background-color: var(--purple);
+}
+.pink {
+  background-color: var(--pink);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  padding: 0;
+  margin: 0;
+  background-color: var(--black);
+  color: var(--white);
+  font-family: mainText, sans-serif;
+}
 h1 {
-  color: green;
+  color: var(--green);
 }
 
 body {
-    background-image: url("bg.png");
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+  background-image: url("images/bg-1024.webp");
+  background-repeat: no-repeat;
+  background-position: 50% 20%;
 }
 
-
-.heading {
-    text-align: center;
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  body {
+    background-image: url("images/bg-768.webp");
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: cover;
+  }
+  h1 {
+    color: var(--gold);
+  }
 }
 
-.content {
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  body {
+    background-image: url("images/bg-1024.webp");
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: cover;
+  }
+  h1 {
+    color: var(--blue);
+  }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  body {
+    background-image: url("images/bg.webp");
+    background-size: 1600px;
+    background-repeat: no-repeat;
+    background-position: center cover;
+  }
+  h1 {
+    color: var(--black-lighter);
+  }
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+.page {
+  height: 100vh;
+
+  /* grid container settings */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+}
+
+.page > .heading {
+  grid-area: header;
+  height: 3rem;
+}
+
+.page > .main {
+  grid-area: main;
+  margin: 0 auto;
+  height: calc(100vh-6rem);
+}
+
+.page > .footer {
+  grid-area: footer;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 2rem;
+}
+
+.heading > nav {
+  margin: auto;
+  line-height: 1rem;
+  padding: 1rem 0;
+  text-align: right;
+}
+
+.footer-content {
+  margin: auto;
+  line-height: 1rem;
+  font-size: 0.75rem;
+  padding: 0.5rem 0;
+  width: 50%;
   text-align: center;
-
 }
 
-.button {
-    background-color: blue;
-    padding: 1em;
-    margin: 2em;
-    border: .5em solid red;
-    display: inline-block;
+.hero {
+  /* width: 90vw; */
+  /* height: 70%; */
+  background-color: rgba(255, 255, 255, 0.1);
+  /* border-radius: 2rem; */
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
 }
 
-.button:hover {
-      border: .5em solid purple;
-      font-weight: bold;
+.hero-text {
+  font-size: 6rem;
+  font-family: headingText;
+  letter-spacing: -0.075em;
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    var(--aqua) 0%,
+    var(--purple) 29%,
+    var(--pink) 67%,
+    var(--yellow) 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  /* color: #fff; */
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 5s linear infinite reverse;
+
+  display: inline-block;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.box {
+  display: block;
+}
+
+.box1 {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.box2 {
+  width: 5rem;
+  height: 5rem;
+}
+.box3 {
+  width: 7.5rem;
+  height: 7.5rem;
+}
+.box4 {
+  width: 10rem;
+  height: 10rem;
+}
+
+.circle {
+  width: 50%;
+  /* height: 50%; */
+  aspect-ratio: 1/1;
+  opacity: 0.01;
+  border-radius: 50%;
+  background-color: rgba(255, 0, 0, 0.1);
+  padding: 2.3rem;
+}
+
+.small-square {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: #facd3d;
+}
+
+.shapes {
+  position: absolute;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+.shapes > * {
+  position: relative;
+}
+
+.anime-contain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.stick-man {
+  background-color: #141414;
+  width: 10rem;
+  height: 10rem;
 }
